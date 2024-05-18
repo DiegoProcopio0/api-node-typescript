@@ -1,3 +1,5 @@
 import { server } from "./server/server";
 
-server.listen(3000, () => console.log("APP routing in port 3000"));
+server.listen(process.env.PORT || 3333, () =>
+  console.log(`APP routing in port ${process.env.PORT || 3333}`),
+);
