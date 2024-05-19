@@ -1,20 +1,14 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
 
+import { CidadeController } from "../controllers";
+
 const router = Router();
 
 router.get("/", (req, res) => {
-  type TParams = { teste?: string };
-
-  const { teste } = req.query as TParams;
-
-  res.status(StatusCodes.ACCEPTED).send("hello world " + teste);
+  res.status(StatusCodes.OK).send("hello world ");
 });
 
-router.post("/teste", (req, res) => {
-  const body = req.body;
-
-  res.status(201).send(body);
-});
+router.post("/cidades", CidadeController.create);
 
 export { router };

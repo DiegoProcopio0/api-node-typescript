@@ -1,13 +1,13 @@
-GET http://localhost:3000?teste=123
+GET http://localhost:3333
 
 ###
 
-POST http://localhost:3000/teste
+POST http://localhost:3333/cidades
 content-type: application/json
 
 {
-    "name": "sample",
-    "time": "Wed, 21 Oct 2015 18:27:50 GMT"
+    "nome": "sample",
+    "estado": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
 
 ###
