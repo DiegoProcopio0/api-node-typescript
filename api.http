@@ -2,6 +2,10 @@ GET http://localhost:3333
 
 ###
 
+GET http://localhost:3333/cidades?page=0&filter=0
+
+###
+
 POST http://localhost:3333/cidades
 content-type: application/json
 

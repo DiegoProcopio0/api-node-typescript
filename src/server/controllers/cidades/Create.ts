@@ -6,18 +6,16 @@ import { validation } from "../../shared/middlewares";
 
 interface ICidade {
   nome: string;
-  estado: string;
 }
 
 export const createValidation = validation((getSchema) => ({
   body: getSchema<ICidade>(
     yup.object().shape({
       nome: yup.string().required().min(3).max(100),
-      estado: yup.string().required().min(3).max(100),
     }),
   ),
 }));
 
 export const create = async (req: Request<{}, {}, ICidade>, res: Response) => {
-  res.send("Criado");
+  res.status(StatusCodes.INTERNAL_SERVER_ERROR).send("Não implementado");
 };
