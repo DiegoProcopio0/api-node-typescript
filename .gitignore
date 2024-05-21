@@ -3,6 +3,7 @@
 
 ### Node ###
 build
+.sqlite
 
 # Logs
 logs
