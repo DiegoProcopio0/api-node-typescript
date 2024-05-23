@@ -4,6 +4,7 @@
 ### Node ###
 build
 .sqlite
+/coverage
 
 # Logs
 logs

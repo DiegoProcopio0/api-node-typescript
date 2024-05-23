@@ -6,6 +6,24 @@ GET http://localhost:3333/cidades?page=0&filter=0
 
 ###
 
+
+GET http://localhost:3333/cidades/1
+
+###
+
+PUT http://localhost:3333/cidades/1
+content-type: application/json
+
+{
+    "nome": "caxias"  
+}
+
+###
+
+DELETE  http://localhost:3333/cidades/1
+
+###
+
 POST http://localhost:3333/cidades
 content-type: application/json
 

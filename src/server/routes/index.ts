@@ -21,4 +21,22 @@ router.get(
   CidadeController.getAll,
 );
 
+router.get(
+  "/cidades/:id",
+  CidadeController.getByIdValidation,
+  CidadeController.getById,
+);
+
+router.put(
+  "/cidades/:id",
+  CidadeController.getUpdateByIdValidation,
+  CidadeController.UpdateById,
+);
+
+router.delete(
+  "/cidades/:id",
+  CidadeController.deleteByIdValidation,
+  CidadeController.deleteById,
+);
+
 export { router };
