@@ -22,9 +22,15 @@ export const getById = async (
 ) => {
   const { id } = req.params;
 
-  console.log("id", id);
-
+  if(Number(id) === 99) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    errors: {
+      default: "Registro não encontrado" 
+    }
+  })
   res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .send("GET Não implementad getById");
+    .status(StatusCodes.OK)
+    .json({
+      id: id,
+      nome: 'Caxias do sul'
+    });
 };
