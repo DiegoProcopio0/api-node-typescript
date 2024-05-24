@@ -16,8 +16,6 @@ describe("Cidades - Create", () => {
       nome: "s",
     });
 
-    console.log(res1.body);
-
     expect(res1.status).toBe(StatusCodes.BAD_REQUEST);
     expect(res1.body).toEqual({
       errorsResult: { body: { nome: "Deve ter pelo menos 3 caracteres" } },

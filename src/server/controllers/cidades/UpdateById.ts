@@ -39,6 +39,6 @@ export const UpdateById = async (
   })
 
   res
-    .status(StatusCodes.OK)
+    .status(StatusCodes.NO_CONTENT)
     .send();
 };

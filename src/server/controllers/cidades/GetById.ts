@@ -20,9 +20,9 @@ export const getById = async (
   req: Request<IParamProps, {}, {}>,
   res: Response,
 ) => {
-  const { id } = req.params;
+  const id = +req.params.id!;
 
-  if(Number(id) === 99) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+  if(id === 99) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
     errors: {
       default: "Registro não encontrado" 
     }
