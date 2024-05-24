@@ -3,7 +3,7 @@
 
 ### Node ###
 build
-.sqlite
+*.sqlite3
 /coverage
 
 # Logs
