@@ -3,14 +3,13 @@ import { StatusCodes } from "http-status-codes";
 
 import * as yup from "yup";
 import { validation } from "../../shared/middlewares";
+import { ICidade } from "../../database/models";
 
 interface IParamProps {
   id?: number;
 }
 
-interface IBodyParams {
-  nome: string;
-}
+interface IBodyParams extends Omit<ICidade, "id"> {}
 
 export const getUpdateByIdValidation = validation((getSchema) => ({
   params: getSchema<IParamProps>(
@@ -29,16 +28,14 @@ export const UpdateById = async (
   req: Request<IParamProps, {}, IBodyParams>,
   res: Response,
 ) => {
-
   const { id } = req.params;
 
-  if(Number(id) === 99) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-    errors: {
-      default: "Registro não encontrado" 
-    }
-  })
+  if (Number(id) === 99)
+    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      errors: {
+        default: "Registro não encontrado",
+      },
+    });
 
-  res
-    .status(StatusCodes.NO_CONTENT)
-    .send();
+  res.status(StatusCodes.NO_CONTENT).send();
 };
