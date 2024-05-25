@@ -1,8 +1,8 @@
-GET http://localhost:3333
+GET http://localhost:3333/
 
 ###
 
-GET http://localhost:3333/cidades?page=0&filter=0
+GET http://localhost:3333/cidades
 
 ###
 
@@ -28,8 +28,7 @@ POST http://localhost:3333/cidades
 content-type: application/json
 
 {
-    "nome": "sample",
-    "estado": "Wed, 21 Oct 2015 18:27:50 GMT"
+    "nome": "new city"
 }
 
 ###

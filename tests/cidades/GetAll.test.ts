@@ -17,7 +17,7 @@ describe("Cidades - GetAll", () => {
     expect(resBuscada.body).toEqual([
       {
         id: 1,
-        nome: "Caxias do Sul",
+        nome: "Caxias do sul",
       },
     ]);
     expect(+resCount).toBeGreaterThan(0);

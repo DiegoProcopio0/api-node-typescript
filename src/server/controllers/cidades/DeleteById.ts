@@ -3,6 +3,7 @@ import { StatusCodes } from "http-status-codes";
 
 import * as yup from "yup";
 import { validation } from "../../shared/middlewares";
+import { CidadeProvider } from "../../database/providers/cidades";
 
 interface IParamProps {
   id?: number;
@@ -16,16 +17,22 @@ export const deleteByIdValidation = validation((getSchema) => ({
   ),
 }));
 
-export const deleteById = async (req: Request<IParamProps>, res: Response) => {
-  const { id } = req.params;
+export const deleteById = async (req: Request, res: Response) => {
+  const id = +req.params.id;
 
-  if(Number(id) === 99) return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
-    errors: {
-      default: "Registro não encontrado" 
-    }
-  })
+  if (!id) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      errors: { default: "O parâmetro 'id' precisa ser informado." },
+    });
+  }
 
-  res
-    .status(StatusCodes.NO_CONTENT)
-    .send();
+  const result = await CidadeProvider.deleteById(id);
+
+  if (result instanceof Error) {
+    return res.status(StatusCodes.BAD_REQUEST).json({
+      errors: { default: result.message },
+    });
+  }
+
+  res.status(StatusCodes.NO_CONTENT).send();
 };
