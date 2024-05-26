@@ -3,7 +3,7 @@ import { StatusCodes } from "http-status-codes";
 
 import * as yup from "yup";
 import { validation } from "../../shared/middlewares";
-import { CidadeProvider } from "../../database/providers/cidades";
+import { PessoaProvider } from "../../database/providers/pessoas";
 
 interface IQueryProps {
   id?: number;
@@ -27,18 +27,15 @@ export const getAll = async (
   req: Request<{}, {}, {}, IQueryProps>,
   res: Response,
 ) => {
-  const { page, limit, filter, id } = req.query!;
+  const { page, limit, filter } = req.query!;
 
-  const result = await CidadeProvider.getAll(
+  const result = await PessoaProvider.getAll(
     page || 1,
     limit || 7,
     filter || "",
-    Number(id),
   );
 
-  console.log("result", result);
-
-  const count = await CidadeProvider.count(filter);
+  const count = await PessoaProvider.count(filter);
 
   if (count instanceof Error) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

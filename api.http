@@ -33,11 +33,36 @@ content-type: application/json
 
 ###
 
+GET http://localhost:3333/pessoas
+
+###
+
+
+GET http://localhost:3333/pessoas/1
+
+###
+
 POST http://localhost:3333/pessoas
 content-type: application/json
 
 {
     "nomeCompleto": "Diego Procopio",
+    "email": "mail@mail.com",
+    "cidadeId": 509
+}
+
+###
+
+DELETE http://localhost:3333/pessoas/1
+
+###
+
+
+PUT http://localhost:3333/pessoas/1
+content-type: application/json
+
+{
+    "nomeCompleto": "Diego Silva",
     "email": "mail@mail.com",
     "cidadeId": 509
 }

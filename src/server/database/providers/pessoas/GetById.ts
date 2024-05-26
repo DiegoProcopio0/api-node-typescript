@@ -11,9 +11,9 @@ export const getById = async (id: number): Promise<IPessoa | Error> => {
 
     if (result) return result;
 
-    return Error("Erro ao deletar registro!");
+    return Error("Erro registro não encontrado!");
   } catch (error) {
-    console.log("Erro ao deletar registro >>", error);
-    return Error("Erro ao deletar registro!");
+    console.log("Erro ao buscar registro >>", error);
+    return Error("Erro ao buscar registro!");
   }
 };

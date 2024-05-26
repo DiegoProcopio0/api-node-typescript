@@ -3,7 +3,7 @@ import { StatusCodes } from "http-status-codes";
 
 import * as yup from "yup";
 import { validation } from "../../shared/middlewares";
-import { CidadeProvider } from "../../database/providers/cidades";
+import { PessoaProvider } from "../../database/providers/pessoas";
 
 interface IParamProps {
   id?: number;
@@ -26,7 +26,7 @@ export const deleteById = async (req: Request, res: Response) => {
     });
   }
 
-  const result = await CidadeProvider.deleteById(id);
+  const result = await PessoaProvider.deleteById(id);
 
   if (result instanceof Error) {
     return res.status(StatusCodes.BAD_REQUEST).json({

@@ -1,16 +1,16 @@
-import type { Request, RequestHandler, Response } from "express";
+import type { Request, Response } from "express";
 import { StatusCodes } from "http-status-codes";
 
 import * as yup from "yup";
 import { validation } from "../../shared/middlewares";
-import { ICidade } from "../../database/models";
-import { CidadeProvider } from "../../database/providers/cidades";
+import { IPessoa } from "../../database/models";
+import { PessoaProvider } from "../../database/providers/pessoas";
 
 interface IParamProps {
   id?: number;
 }
 
-interface IBodyParams extends Omit<ICidade, "id"> {}
+interface IBodyParams extends Omit<IPessoa, "id"> {}
 
 export const getUpdateByIdValidation = validation((getSchema) => ({
   params: getSchema<IParamProps>(
@@ -20,7 +20,9 @@ export const getUpdateByIdValidation = validation((getSchema) => ({
   ),
   body: getSchema<IBodyParams>(
     yup.object().shape({
-      nome: yup.string().required(),
+      nomeCompleto: yup.string().required().min(3).max(150),
+      email: yup.string().required().email(),
+      cidadeId: yup.number().integer().required().moreThan(0),
     }),
   ),
 }));
@@ -30,7 +32,7 @@ export const UpdateById = async (
   res: Response,
 ) => {
   const id = req.params.id;
-  const nome = req.body;
+  const body = req.body;
 
   if (!id) {
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
@@ -38,7 +40,7 @@ export const UpdateById = async (
     });
   }
 
-  const result = CidadeProvider.updateById(id, nome);
+  const result = PessoaProvider.updateById(id, body);
 
   if (result instanceof Error)
     return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({

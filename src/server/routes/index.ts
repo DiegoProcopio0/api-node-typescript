@@ -39,10 +39,34 @@ router.delete(
   CidadeController.deleteById,
 );
 
+router.get(
+  "/pessoas",
+  PessoaController.getAllValidation,
+  PessoaController.getAll,
+);
+
+router.get(
+  "/pessoas/:id",
+  PessoaController.getByIdValidation,
+  PessoaController.getById,
+);
+
 router.post(
   "/pessoas",
   PessoaController.createValidation,
   PessoaController.create,
+);
+
+router.delete(
+  "/pessoas/:id",
+  PessoaController.deleteByIdValidation,
+  PessoaController.deleteById,
+);
+
+router.put(
+  "/pessoas/:id",
+  PessoaController.getUpdateByIdValidation,
+  PessoaController.UpdateById,
 );
 
 export { router };
