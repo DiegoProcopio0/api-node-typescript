@@ -1,13 +1,13 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
 
-import { CidadeController } from "../controllers";
+import { CidadeController, PessoaController } from "../controllers";
 
 const router = Router();
 
-// router.get("/", (req, res) => {
-//   res.status(StatusCodes.OK).send("hello world");
-// });
+router.get("/", (req, res) => {
+  res.status(StatusCodes.OK).send("hello world");
+});
 
 router.post(
   "/cidades",
@@ -37,6 +37,12 @@ router.delete(
   "/cidades/:id",
   CidadeController.deleteByIdValidation,
   CidadeController.deleteById,
+);
+
+router.post(
+  "/pessoas",
+  PessoaController.createValidation,
+  PessoaController.create,
 );
 
 export { router };

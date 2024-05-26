@@ -3,9 +3,11 @@ import { Knex } from "../../knex";
 import { ETablesNames } from "../../ETablesNames";
 
 export const create = async (
-  pessoa: Omit<IPessoa, "id">,
+  pessoa: Omit<IPessoa, "id" | "cidadeId">,
 ): Promise<number | Error> => {
   try {
+    console.log("pessoa", pessoa);
+
     const [result] = await Knex(ETablesNames.pessoa)
       .insert(pessoa)
       .returning("id");

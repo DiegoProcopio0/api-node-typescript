@@ -32,3 +32,13 @@ content-type: application/json
 }
 
 ###
+
+POST http://localhost:3333/pessoas
+content-type: application/json
+
+{
+    "nomeCompleto": "Diego Procopio",
+    "email": "mail@mail.com"
+}
+
+###
