@@ -30,5 +30,5 @@ export const create = async (
     });
   }
 
-  res.status(StatusCodes.CREATED).send(String(result));
+  res.status(StatusCodes.CREATED).json(Number(result));
 };
