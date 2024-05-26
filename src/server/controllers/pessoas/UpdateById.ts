@@ -35,7 +35,7 @@ export const UpdateById = async (
   const body = req.body;
 
   if (!id) {
-    return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+    return res.status(StatusCodes.BAD_REQUEST).json({
       errors: { default: "O parâmetro 'id' precisa ser informado." },
     });
   }

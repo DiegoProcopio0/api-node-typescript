@@ -13,7 +13,7 @@ export const createValidation = validation((getSchema) => ({
     yup.object().shape({
       nomeCompleto: yup.string().required().min(3).max(150),
       email: yup.string().required().email(),
-      cidadeId: yup.number().integer().required().moreThan(0),
+      cidadeId: yup.number().integer().required().min(1).moreThan(0),
     }),
   ),
 }));
