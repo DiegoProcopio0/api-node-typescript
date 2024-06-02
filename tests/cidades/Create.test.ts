@@ -8,7 +8,7 @@ describe("Cidades - Create", () => {
     });
 
     expect(res1.status).toBe(StatusCodes.CREATED);
-    expect(typeof res1.body).toBe("object");
+    expect(typeof res1.body).toBe("number");
   });
 
   it("Deve retornar erro com nome muito curto", async () => {

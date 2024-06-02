@@ -1,22 +1,25 @@
 import { StatusCodes } from "http-status-codes";
 import { testServer } from "../jest.setup";
 
-describe("Cidades - Create", () => {
-  it("Deve criar um registro", async () => {
+describe("Pessoas - Create", () => {
+  let cidadeId: undefined | number = undefined;
+  beforeAll(async () => {
     const resCreate = await testServer.post("/cidades").send({
-      nome: "São Paulo",
+      nome: "havai",
     });
 
-    expect(resCreate.status).toBe(StatusCodes.CREATED);
+    cidadeId = resCreate.body;
+  });
 
+  it("Deve criar um registro", async () => {
     const res1 = await testServer.post("/pessoas").send({
       nomeCompleto: "Diego Procopio",
       email: "maildsss@mail.com",
-      cidadeId: 1,
+      cidadeId,
     });
 
-    expect(res1.status).toBe(StatusCodes.CREATED);
     expect(res1.body).toBe(1);
+    expect(res1.status).toBe(StatusCodes.CREATED);
   });
 
   it("Deve retornar erro com cidadeId não encontrado", async () => {
