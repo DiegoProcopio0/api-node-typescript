@@ -68,3 +68,24 @@ content-type: application/json
 }
 
 ###
+
+POST http://localhost:3333/cadastrar
+content-type: application/json
+
+{
+    "nome": "Die",
+    "email": "ewweew33@mail.com",
+    "senha": "senha@12"
+}
+
+###
+
+POST http://localhost:3333/entrar
+content-type: application/json
+
+{
+    "email": "mailfddfdsss@mail.com",
+    "senha": "senha@12"
+}
+
+###

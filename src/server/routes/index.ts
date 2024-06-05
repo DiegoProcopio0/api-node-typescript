@@ -1,7 +1,11 @@
 import { Router } from "express";
 import { StatusCodes } from "http-status-codes";
 
-import { CidadeController, PessoaController } from "../controllers";
+import {
+  CidadeController,
+  PessoaController,
+  UsuarioController,
+} from "../controllers";
 
 const router = Router();
 
@@ -67,6 +71,18 @@ router.put(
   "/pessoas/:id",
   PessoaController.getUpdateByIdValidation,
   PessoaController.UpdateById,
+);
+
+router.post(
+  "/entrar",
+  UsuarioController.signInValidation,
+  UsuarioController.SignIn,
+);
+
+router.post(
+  "/cadastrar",
+  UsuarioController.signUpValidation,
+  UsuarioController.signUp,
 );
 
 export { router };
