@@ -13,6 +13,7 @@ GET http://localhost:3333/cidades/1
 
 PUT http://localhost:3333/cidades/1
 content-type: application/json
+Authorization: Bearer 123
 
 {
     "nome": "caxias"  
@@ -73,8 +74,8 @@ POST http://localhost:3333/cadastrar
 content-type: application/json
 
 {
-    "nome": "Die",
-    "email": "ewweew33@mail.com",
+    "nome": "Moacir",
+    "email": "moados@mail.com",
     "senha": "senha@12"
 }
 
@@ -84,7 +85,7 @@ POST http://localhost:3333/entrar
 content-type: application/json
 
 {
-    "email": "mailfddfdsss@mail.com",
+    "email": "moados@mail.com",
     "senha": "senha@12"
 }
 

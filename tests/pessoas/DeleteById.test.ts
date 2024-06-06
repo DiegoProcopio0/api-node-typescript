@@ -1,30 +1,49 @@
 import { StatusCodes } from "http-status-codes";
 import { testServer } from "../jest.setup";
+import { createUser, loginUser } from "../testUtils";
 
 describe("Pessoas - DeleteById", () => {
   let cidadeId: undefined | number = undefined;
+  let accessToken: string = "";
   beforeAll(async () => {
-    const resCreate = await testServer.post("/cidades").send({
-      nome: "havai",
-    });
+    await testServer.post("/cadastrar").send(createUser);
+
+    const result = await testServer.post("/entrar").send(loginUser);
+
+    accessToken = result.body.accessToken;
+
+    const resCreate = await testServer
+      .post("/cidades")
+      .set("Authorization", `Bearer ${accessToken}`)
+      .send({
+        nome: "havai",
+      });
 
     cidadeId = resCreate.body;
   });
 
   it("Deve deletar um registro", async () => {
-    const resPerson = await testServer.post("/pessoas").send({
-      nomeCompleto: "Diego Procopio",
-      email: "maildsss@mail.com",
-      cidadeId,
-    });
+    const resPerson = await testServer
+      .post("/pessoas")
+      .set("Authorization", `Bearer ${accessToken}`)
+      .send({
+        nomeCompleto: "Diego Procopio",
+        email: "maildsss@mail.com",
+        cidadeId,
+      });
 
-    const res1 = await testServer.delete(`/pessoas/${resPerson.body}`);
+    const res1 = await testServer
+      .delete(`/pessoas/${resPerson.body}`)
+      .set("Authorization", `Bearer ${accessToken}`);
 
     expect(res1.status).toBe(StatusCodes.NO_CONTENT);
   });
 
   it("Deve retornar erro com registro não encontrado", async () => {
-    const res1 = await testServer.get("/pessoas/99").send();
+    const res1 = await testServer
+      .get("/pessoas/99")
+      .set("Authorization", `Bearer ${accessToken}`)
+      .send();
 
     expect(res1.status).toBe(StatusCodes.BAD_REQUEST);
     expect(res1.body).toEqual({
