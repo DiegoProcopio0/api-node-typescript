@@ -8,6 +8,8 @@
 [Jest__url]: https://jestjs.io/pt-BR/
 [Git_BADGE]: https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white
 [Git__url]: https://git-scm.com/
+[SQLite__BADGE]: https://img.shields.io/badge/sqlite-%2307405e.svg?style=for-the-badge&logo=sqlite&logoColor=white
+[SQLite__url]: https://www.sqlite.org/docs.html
 
 <h1 align="center" style="font-weight: bold;">API 💻</h1>
 
@@ -21,6 +23,7 @@
 - [![Express][EXPRESS__BADGE]][EXPRESS__url]
 - [![Jest][Jest_BADGE]][Jest__url]
 - [![EsLint][Eslint.js]][Eslint-url]
+- [![EsLint][SQLite__BADGE]][SQLite__url]
 - [![Git][Git_BADGE]][Git__url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
